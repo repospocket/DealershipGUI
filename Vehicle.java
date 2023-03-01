@@ -13,11 +13,11 @@ public class Vehicle {
  * @param numWheels  ;  Number of wheels.
  */
 
-	public Vehicle(String mfr, String color,String power) {
+	public Vehicle(Integer vin, String mfr, String color,String power) {
 		this.mfr = mfr;
 		this.color = color;
 		this.power = power;
-	    vin = (int)(Math.random() * 400 + 1) + 100;
+	    this.vin = vin;
 	}
 
 //Setters and getters for Manufacture , Color, Power, Number of wheels.

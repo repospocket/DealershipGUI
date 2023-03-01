@@ -66,7 +66,9 @@ public class dealershipUI {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		 dealer = new CarDealership();
+
 		    sys = dealer.sys;
 	          
 		  // Then create an (initially empty) array list of type Car
@@ -78,41 +80,12 @@ public class dealershipUI {
 		   * Create an array list of car type and add car objects to it.
 		   */
 		   kar = new ArrayList<Car>();
+		    
+	  
+	  		kar  =  CarDealershipSimulator.readCSV("cars.csv");
 		  
 		  //I/O reader that reads from cars.txt file and adds cars automatically to the inventory arraylist.
-		  try{
-				File file = new File("cars.txt");
-				Scanner in = new Scanner(file);
-				//while the reader has next value reads it and assign it to its appropriate variable.
-				while(in.hasNext()){
-					String Mfr = in.next();
-					String Color = in.next();
-					String Model = in.next();
-					String Power = in.next();
-					double SafetyRating = in.nextDouble();
-					int MaxRange = in.nextInt();
-					String AWD = in.next();
-					boolean tAWD = false;
-					if(AWD.equals("AWD")){
-						tAWD = true;
-					} else{tAWD = false;}
-					
-					Double Price = in.nextDouble();
-					if(Power.equals("ELECTRIC_MOTOR")){
-					int RechargeTime = in.nextInt();
-					Car Car = new ElectricCar(Mfr, Color, Model, Power, SafetyRating, MaxRange, tAWD, Price, RechargeTime);
-					kar.add(Car);
-				}
-					else{
-						Car Car = new Car(Mfr, Color, Model, Power, SafetyRating,MaxRange, tAWD, Price);
-						kar.add(Car);
-					}
-				}
-				in.close();
-		}
-		  catch(FileNotFoundException e){
-				e.printStackTrace();
-		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

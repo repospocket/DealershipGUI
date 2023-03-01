@@ -9,5 +9,7 @@ DealershipCMD.jar is a Command-line interface.
 
 ToDo:  
 #Add function SAVE to write changes to cars.txt file.  
+part 1 - switched to csv and added readcsv function 
 #Prevent Clear filters function from reseting inventory.  
 ![example](dealership.gif)
+![example](dealercmd.jpeg)

@@ -14,8 +14,8 @@ public class Car extends Vehicle implements Comparable<Car> {
 	public static final int MINIVAN= 3;
 	
 //Constructor for car
-	public Car(String mfr, String color, String model, String power, double safetyRating, int maxRange, boolean aWD, double price) {
-		super(mfr, color, power);
+	public Car(Integer vin, String mfr, String color, String model, String power, double safetyRating, int maxRange, boolean aWD, double price) {
+		super(vin, mfr, color, power);
 		this.model = model;
 		this.maxRange = maxRange;
 		this.safetyRating = safetyRating;

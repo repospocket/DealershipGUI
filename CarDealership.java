@@ -107,7 +107,7 @@ public class CarDealership {
 			System.out.println("No cars in inventory! Please Add cars" );
     		return "No cars in inventory! Please Add cars";}
     	else {
-			System.out.println("# VIN MFR COLOR MODEL POWER SAFTYRATING PRICE");
+			System.out.println("# VIN MFR COLOR MODEL POWER SAFTYRATING PRICE RECHARGETIME");
     	for (Object x : carz) {
     		System.out.println(carz.indexOf(x) + " " + ((Car) x).display());
     		dis +=  carz.indexOf(x) + " " + ((Car) x).display() + "\n";

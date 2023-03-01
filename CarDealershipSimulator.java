@@ -3,11 +3,69 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Map.Entry;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class CarDealershipSimulator  
 {
+
+	public static ArrayList<Car> readCSV(String filePath) {
+        BufferedReader br = null;
+        String line = "";
+		ArrayList<Car> kar = new ArrayList<Car>();
+
+        try {
+            br = new BufferedReader(new FileReader(filePath));
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+				
+
+				Integer Vin = Integer.parseInt(data[0]) ;
+				String Mfr = data[1] ;
+				String Color = data[2] ;
+				String Model = data[3] ;
+				String Power = data[4] ;
+				Double SafetyRating = Double.parseDouble(data[5]) ;
+				int MaxRange = Integer.parseInt(data[6]);
+				String AWD = data[7];
+				boolean tAWD = false;
+				if(AWD.equals("AWD")){
+					tAWD = true;
+				} else{tAWD = false;}
+				
+				
+				Double Price = Double.parseDouble(data[8]) ;
+ 
+				if(Power.equals("ELECTRIC_MOTOR")){
+				int RechargeTime = Integer.parseInt(data[9]);
+				Car Car = new ElectricCar(Vin, Mfr, Color, Model, Power, SafetyRating, MaxRange, tAWD, Price, RechargeTime);
+				kar.add(Car);
+			}
+			else{
+				Car Car = new Car(Vin, Mfr, Color, Model, Power, SafetyRating,MaxRange, tAWD, Price);
+				
+				kar.add(Car);
+			}
+			
+            }
+
+      } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+		return kar;
+    }
+
   public static void main(String[] args) throws Exception
   {	  
 	String newline = System.lineSeparator();
@@ -54,44 +112,10 @@ public class CarDealershipSimulator
 	  /**
 	   * Create an array list of car type and add car objects to it.
 	   */
+	 
 	  ArrayList<Car> kar = new ArrayList<Car>();
-	  
+	  kar  =  readCSV("cars.csv");
 	  //I/O reader that reads from cars.txt file and adds cars automatically to the inventory arraylist.
-	  try{
-			File file = new File("cars.txt");
-			Scanner in = new Scanner(file);
-			//while the reader has next value reads it and assign it to its appropriate variable.
-			while(in.hasNext()){
-				
-				String Mfr = in.next();
-				String Color = in.next();
-				String Model = in.next();
-				String Power = in.next();
-				double SafetyRating = in.nextDouble();
-				int MaxRange = in.nextInt();
-				String AWD = in.next();
-				boolean tAWD = false;
-				if(AWD.equals("AWD")){
-					tAWD = true;
-				} else{tAWD = false;}
-				
-				Double Price = in.nextDouble();
-				if(Power.equals("ELECTRIC_MOTOR")){
-				int RechargeTime = in.nextInt();
-				Car Car = new ElectricCar(Mfr, Color, Model, Power, SafetyRating, MaxRange, tAWD, Price, RechargeTime);
-				kar.add(Car);
-			}
-				else{
-					Car Car = new Car(Mfr, Color, Model, Power, SafetyRating,MaxRange, tAWD, Price);
-					kar.add(Car);
-				}
-			}
-			in.close();
-			
-	}
-	  catch(FileNotFoundException e){
-			e.printStackTrace();
-	}
 	  
 	  try (// Create a scanner object
 	Scanner input = new Scanner(System.in)) {

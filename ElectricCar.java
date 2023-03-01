@@ -4,9 +4,9 @@ public class ElectricCar extends Car {
 	String batteryType ;
 
 //Constructs the electric car 
-	public ElectricCar(String mfr, String color,  String model, String power, double safetyRating, int maxRange,
+	public ElectricCar(Integer vin, String mfr, String color,  String model, String power, double safetyRating, int maxRange,
 			boolean aWD, double price, int rechargeTime) {
-		super(mfr, color, model, power,safetyRating, maxRange , aWD, price);
+		super(vin, mfr, color, model, power,safetyRating, maxRange , aWD, price);
 		this.rechargeTime = rechargeTime;
 	}
 
