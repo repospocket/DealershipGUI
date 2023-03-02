@@ -253,12 +253,13 @@ public class dealershipUI {
 
 		  btnList.addActionListener(new ActionListener() {
 		  	public void actionPerformed(ActionEvent e) {
-		  			heloos.setText( "\n"+ dealer.displayInventory());
+				    String header = ("# VIN MFR COLOR MODEL POWER SAFTYRATING PRICE RECHARGETIME");
+		  			heloos.setText( header + "\n"+ dealer.displayInventory());
 		  			
 		  	}
 		  });
 		  
-		  JButton btnPopulate = new JButton("Populate from txt file");
+		  JButton btnPopulate = new JButton("Add cars.csv");
 		  btnPopulate.setBackground(new Color(60, 179, 113));
 		  btnPopulate.setForeground(Color.BLACK);
 		  btnPopulate.setBorderPainted(false);
@@ -267,12 +268,13 @@ public class dealershipUI {
 		  		  	public void actionPerformed(ActionEvent arg0) {
 		  		  		
 		  		  		dealer.addCars(kar);
-		  		  		JOptionPane.showConfirmDialog(null, "ADDED");
+						JOptionPane.showMessageDialog(null, "ADDED", "Warning", JOptionPane.WARNING_MESSAGE);
+
 		  		  		
 		  		  	}
 		  		  });
 		  		  
-		  		  btnExist = new JButton("Exit");
+		  		  btnExist = new JButton("Save");
 		  		btnExist.setBorderPainted(false);
 
 		  		  btnExist.setBackground(Color.LIGHT_GRAY);
@@ -543,7 +545,24 @@ public class dealershipUI {
 
 		  		  btnExist.addActionListener(new ActionListener() {
 		  		  	public void actionPerformed(ActionEvent arg0) {
-                frame.dispose();
+						//JOptionPane.showMessageDialog(null, "Warning: This action cannot be undone!", "Warning", JOptionPane.WARNING_MESSAGE);
+						//JOptionPane.showConfirmDialog(null, "ADDED");
+						 // Display a confirmation dialog box with options "Yes", "No", and "Cancel"
+						 int result = JOptionPane.showConfirmDialog(null, "Do you want to save changes?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
+
+						 // Handle the user's response
+						 if (result == JOptionPane.YES_OPTION) {
+							CarDealershipSimulator.writeCSV("cars.csv", dealer.carz);
+							JOptionPane.showMessageDialog(null, "Saved!", null, JOptionPane.WARNING_MESSAGE);
+
+							 System.out.println("User clicked 'Yes'");
+						 } else if (result == JOptionPane.NO_OPTION) {
+							 System.out.println("User clicked 'No'");
+						 } else if (result == JOptionPane.CANCEL_OPTION) {
+							 System.out.println("User clicked 'Cancel'");
+						 }
+
+                        //frame.dispose();
 		  		  	}
 		  		  });
 		  

@@ -44,7 +44,10 @@ public class Vehicle {
 
 //Returns Vehicle manufacture and color information.
 	public String display() {
-		return  vin + " " +  this.getMfr() + " " + this.getColor() ;
+		return  vin + " " +  this.getMfr() + " " + this.getColor() + " "  + this.power;
+	}
+	public String cvsformat() {
+		return  vin + "," +  this.getMfr() + "," + this.getColor() + ","+ this.power ;
 	}
 	
 }

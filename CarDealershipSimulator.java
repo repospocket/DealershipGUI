@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.Map.Entry;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -26,15 +27,13 @@ public class CarDealershipSimulator
 				Integer Vin = Integer.parseInt(data[0]) ;
 				String Mfr = data[1] ;
 				String Color = data[2] ;
-				String Model = data[3] ;
-				String Power = data[4] ;
-				Double SafetyRating = Double.parseDouble(data[5]) ;
-				int MaxRange = Integer.parseInt(data[6]);
-				String AWD = data[7];
-				boolean tAWD = false;
-				if(AWD.equals("AWD")){
-					tAWD = true;
-				} else{tAWD = false;}
+				String Power = data[3] ;
+				String  Model = data[4] ;
+				Double SafetyRating = Double.parseDouble(data[6]) ;
+				int MaxRange = Integer.parseInt(data[5]);
+				
+				String tAWD = data[7];
+				
 				
 				
 				Double Price = Double.parseDouble(data[8]) ;
@@ -66,6 +65,30 @@ public class CarDealershipSimulator
 		return kar;
     }
 
+	public static void writeCSV(String filePath, ArrayList<Car> data) {
+        FileWriter fw = null;
+
+        try {
+            fw = new FileWriter(filePath);
+			for (Car car : data) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(car.display().trim().replaceAll("\\s+", ","));
+                sb.append("\n");
+                fw.write(sb.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fw != null) {
+                try {
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
   public static void main(String[] args) throws Exception
   {	  
 	String newline = System.lineSeparator();
@@ -77,7 +100,7 @@ public class CarDealershipSimulator
 "ADD     -> Add all cars from cars.txt (Sync)" + newline +
 
 "L       -> List available cars" + newline +
-"BUY vin -> Buy a car using its vin (ie. BUY 313)" + newline +
+"SELL vin -> Sell a car using its vin (ie. SELL 3138)" + newline +
 "Q       -> Quit" + newline +
 "RET     -> Return last car bought (undo)" + newline +
 "****" + newline +
@@ -117,6 +140,7 @@ public class CarDealershipSimulator
 	  kar  =  readCSV("cars.csv");
 	  //I/O reader that reads from cars.txt file and adds cars automatically to the inventory arraylist.
 	  
+	  
 	  try (// Create a scanner object
 	Scanner input = new Scanner(System.in)) {
 		// Takes input from user and calls the appropriate methods to execute.
@@ -128,11 +152,18 @@ public class CarDealershipSimulator
 			 //display all cars
 			 if (tokens[0].equals("L")) {
 				 dealer.displayInventory();
+				 
 				}
+
+			 if (tokens[0].equals("SAVE")) {
+					writeCSV("cars.csv", dealer.carz);
+					System.out.println("SAVED!" );
+				   }
+
 			 //Check if index is in range and buy appropriate car.
 			 //throws error if index incorrect
 			 //updates last bought car variable.
-			 if (tokens[0].equals("BUY")) {
+			 if (tokens[0].equals("SELL")) {
 			      try {
 			         int s = Integer.parseInt(tokens[1]);
 			         

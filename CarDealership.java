@@ -121,7 +121,7 @@ public class CarDealership {
     		return "no cars in inventory! please populate me";
     	else {
     	for (Car x : carz) {
-    		if (x.AWD & !x.getPower().equals("ELECTRIC_MOTOR")) {
+    		if (x.AWD == "AWD" & !x.getPower().equals("ELECTRIC_MOTOR")) {
     		System.out.println(carz.indexOf(x) + " " + ((Car) x).display());
     		dis +=  carz.indexOf(x) + " " + ((Car) x).display() + "\n";}
     	}
@@ -135,7 +135,7 @@ public class CarDealership {
     		return "no cars in inventory! please populate me";
     	else {
     	for (Car x : carz) {
-    		if ( x.getPower().equals("ELECTRIC_MOTOR") & !x.AWD) {
+    		if ( x.getPower().equals("ELECTRIC_MOTOR") ) {
     		System.out.println(carz.indexOf(x) + " " + ((Car) x).display());
     		dis +=  carz.indexOf(x) + " " + ((Car) x).display() + "\n";}
     	}
@@ -168,7 +168,7 @@ public class CarDealership {
     public void  filterByAWD() {
     	ArrayList<Car> temp = new ArrayList<Car>();
      	  for (Car x : carz) {
-       		if (x.AWD) {
+       		if (x.AWD == "AWD") {
        			temp.add(x);
        		}
        	}
@@ -196,7 +196,7 @@ public class CarDealership {
     
     public void awdClear() {
     	for (Car x : backup) {
-     		if (!x.AWD & !carz.contains(x)) {
+     		if (!(x.AWD == "AWD") & !carz.contains(x)) {
      			carz.add(x);
      		}
      	}
