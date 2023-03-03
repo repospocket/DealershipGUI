@@ -97,7 +97,7 @@ public class CarDealershipSimulator
 		"**Welcome to the Dealership!**" + newline + 
 		"------------------------------" + newline +
 
-"ADD     -> Add all cars from cars.txt (Sync)" + newline +
+"ADD     -> Add all cars from cars.csv (Sync)" + newline +
 
 "L       -> List available cars" + newline +
 "SELL vin -> Sell a car using its vin (ie. SELL 3138)" + newline +
