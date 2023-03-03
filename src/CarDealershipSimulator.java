@@ -103,6 +103,8 @@ public class CarDealershipSimulator
 "SELL vin -> Sell a car using its vin (ie. SELL 3138)" + newline +
 "Q       -> Quit" + newline +
 "RET     -> Return last car bought (undo)" + newline +
+"SAVE     -> Save changes to cars.csv" + newline +
+
 "****" + newline +
 
 "SPR -> Sort by price" + newline +

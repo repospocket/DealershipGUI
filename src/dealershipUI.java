@@ -6,13 +6,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -42,7 +39,7 @@ public class dealershipUI {
 	 private JPanel panel_2;
 	 private JTextField textprice1;
 	 private JTextField textprice2;
-	 private JLabel lblGeorgesCarDealership;
+	 private JLabel lblWelcomeDealership;
 	 private JPanel panel_5;
 	 private JPanel panel_3;
 	 private JLabel label;
@@ -119,8 +116,8 @@ public class dealershipUI {
 		 
 		 JPanel panel_1 = new JPanel();
 		 
-		 lblGeorgesCarDealership = new JLabel("George's Car Dealership",JTextField.CENTER);
-		 lblGeorgesCarDealership.setFont(new Font("Sitka Text", Font.BOLD, 16));
+		 lblWelcomeDealership = new JLabel("Welcome to the Dealership!",JTextField.CENTER);
+		 lblWelcomeDealership.setFont(new Font("Sitka Text", Font.BOLD, 16));
 		  
 		  scrollPane = new JScrollPane();
 		  SpringLayout sl_panel_1 = new SpringLayout();
@@ -573,14 +570,14 @@ public class dealershipUI {
 		  	gl_panel.createParallelGroup(Alignment.LEADING)
 		  		.addGroup(gl_panel.createSequentialGroup()
 		  			.addGap(162)
-		  			.addComponent(lblGeorgesCarDealership, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+		  			.addComponent(lblWelcomeDealership, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
 		  			.addGap(168))
 		  );
 		  gl_panel.setVerticalGroup(
 		  	gl_panel.createParallelGroup(Alignment.LEADING)
 		  		.addGroup(gl_panel.createSequentialGroup()
 		  			.addGap(5)
-		  			.addComponent(lblGeorgesCarDealership, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+		  			.addComponent(lblWelcomeDealership, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
 		  );
 		  panel.setLayout(gl_panel);
 		  GroupLayout groupLayout = new GroupLayout(frame.getContentPane());

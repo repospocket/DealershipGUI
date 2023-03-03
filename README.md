@@ -13,5 +13,5 @@ part 1 - switched to csv and added readcsv function. (done)
 #Prevent Clear filters function from reseting inventory.  
 #Add button to view sales history and save it on a text file.
 #Return any bought car not only the last.  
-![example](dealership.gif)
-![example](dealercmd.jpeg)
+![example](dealershipGUI.jpg)
+![example](dealershipcmd.jpg)
